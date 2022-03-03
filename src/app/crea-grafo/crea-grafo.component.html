@@ -1,0 +1,49 @@
+<form id="app-cover">
+    <div id="select-box">
+        <input type="checkbox" id="options-view-button">
+        <div id="select-button" class="brd">
+            <div id="selected-value">
+                <span>Seleziona la granulatià</span>
+            </div>
+            <div id="chevrons">
+                <i class="fas fa-chevron-up"></i>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+        </div>
+        <div id="options">
+            <div class="option">
+                <input class="s-c top" type="radio" name="platform" value="codepen" (click)="granularitaScelta('carattere')">
+                <input class="s-c bottom" type="radio" name="platform" value="codepen">
+                <i class="fab fa-codepen"></i>
+                <span class="label">Carattere</span>
+                <span class="opt-val">Carattere</span>
+            </div>
+            <div class="option">
+                <input class="s-c top" type="radio" name="platform" value="dribbble" (click)="granularitaScelta('parole')">
+                <input class="s-c bottom" type="radio" name="platform" value="dribbble">
+                <i class="fab fa-dribbble"></i>
+                <span class="label">Parola</span>
+                <span class="opt-val">Parola</span>
+            </div>
+            <div class="option">
+                <input class="s-c top" type="radio" name="platform" value="behance" (click)="granularitaScelta('metrica')">
+                <input class="s-c bottom" type="radio" name="platform" value="behance">
+                <i class="fab fa-behance"></i>
+                <span class="label">Metrica</span>
+                <span class="opt-val">Metrica</span>
+            </div>
+            <div class="option">
+                <input class="s-c top" type="radio" name="platform" value="behance" (click)="granularitaScelta('metrica')">
+                <input class="s-c bottom" type="radio" name="platform" value="behance">
+                <i class="fab fa-behance"></i>
+                <span class="label">Significato</span>
+                <span class="opt-val">Significato</span>
+            </div>
+
+
+            <div id="option-bg"></div>
+        </div>
+    </div>
+</form>
+<!-- 
+<button (click)="funcProva()">Prova</button> -->

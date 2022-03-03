@@ -1,0 +1,12 @@
+.contenitoreInfo {
+    float: right;
+    border-style: solid;
+    border-color: green;
+    width: 30%;
+    font-size: 1.2em;
+    min-height: 20em;
+}
+
+#ciao {
+    visibility: hidden;
+}

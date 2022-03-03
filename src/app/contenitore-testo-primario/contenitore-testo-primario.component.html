@@ -1,0 +1,199 @@
+<!-- color palette #e63946 #a8dadc #457b9d  #1d3557 -->
+
+<div *ngIf="this.appComponent.errore" class="erroreDiv">
+    <h1>Errore</h1> <br>
+    <p>seleziona prima la granulatità</p>
+    <button (click)="funzioneErrore()">Riprova</button>
+</div>
+
+
+
+
+<div class="menuTestoPrimario">
+    <h2 style="display: inline-block; padding: 0.5em;">seleziona il libro</h2>
+
+    <select *ngIf="!selezionaCapitolo " [(ngModel)]='selezionaCapitolo' (ngModelChange)="ottieniCapitolo($event)" id="selectCapitolo">
+        <!-- <option  *ngFor=" let item of this.nodes ">{{ item.label}}</option> -->
+        <option value="001">libro 1</option>
+        <option value="002">libro 2</option>
+        <option value="003">libro 3</option>
+        <option value="004">libro 4</option>
+        <option value="005">libro 5</option>
+        <option value="006">libro 6</option>
+        <option value="007">libro 7</option>
+        <option value="008">libro 8</option>
+        <option value="009">libro 9</option>
+        <option value="010">libro 10</option>
+        <option value="011">libro 11</option>
+        <option value="012">libro 12</option>
+    </select>
+    <img *ngIf="selezionaCapitolo" style="display: inline-block; width: 1.5em; cursor: pointer;" src="https://img.icons8.com/ios/50/000000/back--v1.png" (click)="funzioneIndietro()" id="pulsanteIndietro" />
+    <div *ngIf="selezionaCapitolo" style="max-height: 15em; overflow: scroll;" class="testo">
+        <div *ngIf="valoreGranularita == 'carattere'">
+
+            <!-- <a *ngFor=" let versi of this.capitoloIntero  " name="fieldName " ngDefaultControl [(ngModel)]='selezionFrase ' (click)="functionCarattere(this.capitoloIntero[i].verse,this.capitoloIntero[i].idV) " style="cursor:pointer;  "> -->
+            <div *ngFor=" let versi of this.capitoloIntero, index as i ">
+                <!-- il div sopra stampa le frasi/versi-->
+                <p *ngIf="i<756" class="numeroVerso" style="display: inline-block;">{{i+1}}</p>
+
+                <span *ngFor="let parole of versi.words ">
+                        <span *ngIf="parole.app else altroTemplate " class="paroleRosse" style="color: red; cursor: pointer; " (click)="functionCarattere(parole.id)"  >{{parole.word}} </span>
+                <ng-template #altroTemplate>
+                    <span style="cursor: pointer;" class="paroleNere" (click)="functionCarattere(parole.id)"> {{parole.word}} </span>
+                </ng-template>
+                </span>
+
+
+                <br>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div *ngIf="valoreGranularita == 'parole'" class="testo" style="max-height: 15em; overflow: scroll;">
+        <div *ngFor=" let versi of this.capitoloIntero  " class="fraseStampata">
+            <!-- il div sopra stampa le frasi/versi-->
+
+            <span *ngFor="let parole of versi.words ">
+                        <span *ngIf="parole.app else altroTemplate "  style="color: red; cursor: pointer; " (click)="funzioneFrase(versi.idV)"  >{{parole.word}} </span>
+            <ng-template #altroTemplate>
+                <span style="cursor: pointer;" (click)="funzioneFrase(versi.idV)"> {{parole.word}} </span>
+            </ng-template>
+            </span>
+
+            <br>
+        </div>
+    </div>
+
+
+
+    <div *ngIf="valoreGranularita == 'metrica'" class="testo" style="max-height: 15em; overflow: scroll;">
+        <div *ngFor=" let versi of this.capitoloIntero  " class="fraseStampata">
+            <!-- il div sopra stampa le frasi/versi-->
+
+            <span *ngFor="let parole of versi.words ">
+                      <span *ngIf="parole.app else altroTemplate "  style="color: red; cursor: pointer; " (click)="funzioneMetrica(versi.idV)"  >{{parole.word}} </span>
+            <ng-template #altroTemplate>
+                <span style="cursor: pointer;" (click)="funzioneMetrica(versi.idV)"> {{parole.word}} </span>
+            </ng-template>
+            </span>
+
+            <br>
+        </div>
+    </div>
+
+
+</div>
+
+
+<svg #myDiv xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin: auto; background: rgb(241, 242, 243); display: block; shape-rendering: crispedges;" width="200px" height="200px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid"
+    [ngStyle]="{'visibility' : visibilita}">
+<g transform="rotate(0 50 50)">
+  <rect x="45.5" y="24" rx="4.5" ry="6" width="9" height="12" fill="#e63946">
+    <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.9166666666666666s" repeatCount="indefinite"></animate>
+  </rect>
+</g><g transform="rotate(30 50 50)">
+  <rect x="45.5" y="24" rx="4.5" ry="6" width="9" height="12" fill="#a8dadc">
+    <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.8333333333333334s" repeatCount="indefinite"></animate>
+  </rect>
+</g><g transform="rotate(60 50 50)">
+  <rect x="45.5" y="24" rx="4.5" ry="6" width="9" height="12" fill="#457b9d">
+    <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.75s" repeatCount="indefinite"></animate>
+  </rect>
+</g><g transform="rotate(90 50 50)">
+  <rect x="45.5" y="24" rx="4.5" ry="6" width="9" height="12" fill="#1d3557">
+    <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.6666666666666666s" repeatCount="indefinite"></animate>
+  </rect>
+</g><g transform="rotate(120 50 50)">
+  <rect x="45.5" y="24" rx="4.5" ry="6" width="9" height="12" fill="#e63946">
+    <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.5833333333333334s" repeatCount="indefinite"></animate>
+  </rect>
+</g><g transform="rotate(150 50 50)">
+  <rect x="45.5" y="24" rx="4.5" ry="6" width="9" height="12" fill="#a8dadc">
+    <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.5s" repeatCount="indefinite"></animate>
+  </rect>
+</g><g transform="rotate(180 50 50)">
+  <rect x="45.5" y="24" rx="4.5" ry="6" width="9" height="12" fill="#457b9d">
+    <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.4166666666666667s" repeatCount="indefinite"></animate>
+  </rect>
+</g><g transform="rotate(210 50 50)">
+  <rect x="45.5" y="24" rx="4.5" ry="6" width="9" height="12" fill="#1d3557">
+    <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.3333333333333333s" repeatCount="indefinite"></animate>
+  </rect>
+</g><g transform="rotate(240 50 50)">
+  <rect x="45.5" y="24" rx="4.5" ry="6" width="9" height="12" fill="#e63946">
+    <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.25s" repeatCount="indefinite"></animate>
+  </rect>
+</g><g transform="rotate(270 50 50)">
+  <rect x="45.5" y="24" rx="4.5" ry="6" width="9" height="12" fill="#a8dadc">
+    <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.16666666666666666s" repeatCount="indefinite"></animate>
+  </rect>
+</g><g transform="rotate(300 50 50)">
+  <rect x="45.5" y="24" rx="4.5" ry="6" width="9" height="12" fill="#457b9d">
+    <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.08333333333333333s" repeatCount="indefinite"></animate>
+  </rect>
+</g><g transform="rotate(330 50 50)">
+  <rect x="45.5" y="24" rx="4.5" ry="6" width="9" height="12" fill="#1d3557">
+    <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="0s" repeatCount="indefinite"></animate>
+  </rect>
+</g>
+</svg>
+
+
+
+
+
+<div class="page">
+    <ngx-graph [links]="links" [nodes]="nodes" [showMiniMap]="true" [curve]="curve" [panningEnabled]="panningEnabled" [enableZoom]="zoomEnabled" [zoomSpeed]="zoomSpeed" [minZoomLevel]="minZoomLevel" [maxZoomLevel]="maxZoomLevel" [panOnZoom]="panOnZoom" [autoZoom]="autoZoom"
+        [autoCenter]="autoCenter" [update$]="update$" [center$]="center$" [zoomToFit$]="zoomToFit$" style="margin-top: 20em;">
+        <ng-template #defsTemplate>
+            <svg:marker id="arrow" viewBox="0 -5 10 10" refX="8" refY="0" markerWidth="4" markerHeight="4" orient="auto">
+                <svg:path d="M0,-5L10,0L0,5" class="arrow-head" />
+            </svg:marker>
+        </ng-template>
+
+
+        <ng-template #nodeTemplate let-node>
+            <svg:g class="node">
+                <svg:rect [attr.width]="node.dimension.width" [attr.height]="node.dimension.height" [attr.fill]="node.data.customColor" />
+                <svg:text alignment-baseline="central" [attr.x]="10" [attr.y]="node.dimension.height / 2">
+                    {{ node.label }}
+                </svg:text>
+            </svg:g>
+        </ng-template>
+
+        <ng-template #linkTemplate let-link>
+            <svg:g class="edge">
+                <svg:path class="line" stroke-width="2" marker-end="url(#arrow)"></svg:path>
+                <svg:text class="edge-label" text-anchor="middle">
+                    <textPath class="text-path" [attr.href]="'#' + link.id" [style.dominant-baseline]="link.dominantBaseline" startOffset="50%">
+                        {{ link.label }}
+                    </textPath>
+                </svg:text>
+            </svg:g>
+        </ng-template>
+    </ngx-graph>
+</div>
+
+<div class="addNodeDiv">
+    <span class="addNode">
+    <h3>nome del nodo</h3>
+    <input type="text" [(ngModel)]="labelInputText">
+  </span>
+    <span class="addNode">
+    <h3>destinazione nodo</h3>
+    <select [(ngModel)]="inputDestination">
+        <option  *ngFor="let nodi of this.nodes, index as i " value="{{this.nodes[i].id}}" >{{this.nodes[i].label}}</option>
+    </select>
+
+  </span>
+    <span>
+    <input type="color" name="colore" value="#rrggbb" [(ngModel)]="coloreNodo" >
+  </span>
+    <br><br>
+    <span class="addNode"><button (click)="addNode(labelInputText,inputDestination,coloreNodo)">Add Node</button>
+    </span>
+
+
+</div>
